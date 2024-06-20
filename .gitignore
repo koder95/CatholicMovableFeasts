@@ -1,0 +1,6 @@
+target/
+conf/
+out/
+*.docx
+*.png
+*.html
