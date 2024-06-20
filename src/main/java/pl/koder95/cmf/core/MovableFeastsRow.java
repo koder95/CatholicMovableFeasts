@@ -17,11 +17,11 @@ public interface MovableFeastsRow {
 
     int getYear();
 
-    default Cycle.Solemnities getSundayCycle() {
+    default Cycle.Solemnities getSolemnitiesCycle() {
         return Cycle.solemnities(getYear());
     }
 
-    default Cycle.Normal getWeekdayCycle() {
+    default Cycle.Normal getNormalCycle() {
         return Cycle.normal(getYear());
     }
 
