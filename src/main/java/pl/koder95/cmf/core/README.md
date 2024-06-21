@@ -12,6 +12,7 @@
 2.	pl.koder95.cmf.core.Cycle$Solemnities
 
 # Opis
+![cmf-core](https://github.com/koder95/CatholicMoveableFeasts/assets/9617256/481ab786-5167-4f1d-9554-cc79635f935a)
 Interfejsy **nr 1** (MovableFeastRow) i **2** (OrdinaryTimeRow) oraz **klasa nr 1** (Cycle) to interfejsy generujące daty świąt ruchomych.
 **Interfejs nr 1** posiada domyślnie zaimplementowane metody (oprócz `getYear()`), które wyliczają daty i tygodnie dla świąt ruchomych w roku zwróconym przez metodę `getYear()`.
 Takie rozwiązanie sprawia, że ten interfejs jest funkcjonalny i łatwy w użyciu.
