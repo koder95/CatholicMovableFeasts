@@ -76,7 +76,9 @@ public interface MovableFeastsRow {
 
     default Stream<?> stream() {
         return Stream.of(getYear(), getSolemnitiesCycle(), getNormalCycle(), getAshWednesday(), getEasterDay(),
-                getAscensionDay(), getPentecost(), getFeastOfCorpusChristi(), getFirstPartOfOrdinaryTime().getEnd(), getFirstPartOfOrdinaryTime().getEndWeekNumber(),
-                getSecondPartOfOrdinaryTime().getStart(), getSecondPartOfOrdinaryTime().getStartWeekNumber(), getFirstSundayOfAdvent());
+                getAscensionDay(), getPentecost(), getFeastOfCorpusChristi(),
+                getFirstPartOfOrdinaryTime().getStart(), getFirstPartOfOrdinaryTime().getStartWeekNumber(), getFirstPartOfOrdinaryTime().getEnd(), getFirstPartOfOrdinaryTime().getEndWeekNumber(),
+                getSecondPartOfOrdinaryTime().getStart(), getSecondPartOfOrdinaryTime().getStartWeekNumber(), getSecondPartOfOrdinaryTime().getEnd(), getSecondPartOfOrdinaryTime().getEndWeekNumber(),
+                getFirstSundayOfAdvent());
     }
 }
