@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.TemporalAdjusters;
+import java.util.stream.Stream;
 
 /**
  * Interfejs definiujący wiersz <b>Tabeli świąt ruchomych</b>. Wszystkie metody interfejsu mają
@@ -71,5 +72,11 @@ public interface MovableFeastsRow {
 
     default LocalDate getFirstSundayOfAdvent() {
         return LocalDate.of(getYear(), Month.DECEMBER, 25).with(TemporalAdjusters.previous(DayOfWeek.SUNDAY)).minusWeeks(3);
+    }
+
+    default Stream<?> stream() {
+        return Stream.of(getYear(), getSolemnitiesCycle(), getNormalCycle(), getAshWednesday(), getEasterDay(),
+                getAscensionDay(), getPentecost(), getFeastOfCorpusChristi(), getFirstPartOfOrdinaryTime().getEnd(), getFirstPartOfOrdinaryTime().getEndWeekNumber(),
+                getSecondPartOfOrdinaryTime().getStart(), getSecondPartOfOrdinaryTime().getStartWeekNumber(), getFirstSundayOfAdvent());
     }
 }
