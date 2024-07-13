@@ -49,7 +49,7 @@ public interface MovableFeastsRow {
     }
 
     default LocalDate getAscensionDay() {
-        return getEasterDay().plusWeeks(6);
+        return getEasterDay().plusDays(39);
     }
 
     default LocalDate getPentecost() {
