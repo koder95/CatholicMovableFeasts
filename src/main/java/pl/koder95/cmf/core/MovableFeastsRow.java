@@ -16,20 +16,35 @@ import java.util.stream.Stream;
  */
 public interface MovableFeastsRow {
 
+    /**
+     * @return rok, dla którego wyznaczane są daty
+     */
     int getYear();
 
+    /**
+     * @return cykl uroczystości dla czytań (rok A, B albo C)
+     */
     default Cycle.Solemnities getSolemnitiesCycle() {
         return Cycle.solemnities(getYear());
     }
 
+    /**
+     * @return cykl czytań w ferie (rok I albo II)
+     */
     default Cycle.Normal getNormalCycle() {
         return Cycle.normal(getYear());
     }
 
+    /**
+     * @return data Środy Popielcowej
+     */
     default LocalDate getAshWednesday() {
         return getEasterDay().minusWeeks(6).minusDays(4);
     }
 
+    /**
+     * @return data Uroczystości Zmartwychwstania Pańskiego
+     */
     default LocalDate getEasterDay() {
         int
                 year = getYear(),
@@ -49,31 +64,70 @@ public interface MovableFeastsRow {
         return LocalDate.of(year, n / 31, (n % 31) + 1);
     }
 
+    /**
+     * @return data Uroczystości Wniebowstąpienia Pańskiego
+     */
     default LocalDate getAscensionDay() {
         return getEasterDay().plusDays(39);
     }
 
+    /**
+     * @return data Uroczystości Zesłania Ducha Świętego
+     */
     default LocalDate getPentecost() {
         return getEasterDay().plusWeeks(7);
     }
 
+    /**
+     * @return data Uroczystości Ciała i Krwi Pańskiej (Boże Ciało)
+     */
     default LocalDate getFeastOfCorpusChristi() {
         return getPentecost().plusWeeks(1).plusDays(4);
     }
 
+    /**
+     * @return dane dotyczące pierwszej części okresu zwykłego
+     */
     default OrdinaryTimeRow getFirstPartOfOrdinaryTime() {
         return OrdinaryTimeRow.create(LocalDate.of(getYear(), Month.JANUARY, 6)
                 .with(TemporalAdjusters.next(DayOfWeek.SUNDAY)).plusDays(1), getAshWednesday().minusDays(1));
     }
 
+    /**
+     * @return dane dotyczące drugiej części okresu zwykłego
+     */
     default OrdinaryTimeRow getSecondPartOfOrdinaryTime() {
         return OrdinaryTimeRow.create(getPentecost().plusDays(1), getFirstSundayOfAdvent().minusWeeks(1));
     }
 
+    /**
+     * @return data rozpoczęcia nowego roku liturgicznego (1. niedziela adwentu)
+     */
     default LocalDate getFirstSundayOfAdvent() {
         return LocalDate.of(getYear(), Month.DECEMBER, 25).with(TemporalAdjusters.previous(DayOfWeek.SUNDAY)).minusWeeks(3);
     }
 
+    /**
+     *
+     * @return strumień zawierający dane w kolejności wywołania metod:<ol>
+     *     <li>{@link MovableFeastsRow#getYear()},</li>
+     *     <li>{@link MovableFeastsRow#getSolemnitiesCycle()},</li>
+     *     <li>{@link MovableFeastsRow#getNormalCycle()},</li>
+     *     <li>{@link MovableFeastsRow#getAshWednesday()},</li>
+     *     <li>{@link MovableFeastsRow#getEasterDay()},</li>
+     *     <li>{@link MovableFeastsRow#getAscensionDay()},</li>
+     *     <li>{@link MovableFeastsRow#getPentecost()},</li>
+     *     <li>{@link MovableFeastsRow#getFeastOfCorpusChristi()},</li>
+     *     <li>{@link OrdinaryTimeRow#getStart() getFirstPartOfOrdinaryTime().getStart()},</li>
+     *     <li>{@link OrdinaryTimeRow#getStartWeekNumber() getFirstPartOfOrdinaryTime().getStartWeekNumber()},</li>
+     *     <li>{@link OrdinaryTimeRow#getEnd() getFirstPartOfOrdinaryTime().getEnd()},</li>
+     *     <li>{@link OrdinaryTimeRow#getEndWeekNumber() getFirstPartOfOrdinaryTime().getEndWeekNumber()},</li>
+     *     <li>{@link OrdinaryTimeRow#getStart() getSecondPartOfOrdinaryTime().getStart()},</li>
+     *     <li>{@link OrdinaryTimeRow#getStartWeekNumber() getSecondPartOfOrdinaryTime().getStartWeekNumber()},</li>
+     *     <li>{@link OrdinaryTimeRow#getEnd() getSecondPartOfOrdinaryTime().getEnd()},</li>
+     *     <li>{@link OrdinaryTimeRow#getEndWeekNumber() getSecondPartOfOrdinaryTime().getEndWeekNumber()},</li>
+     *     <li>{@link MovableFeastsRow#getFirstSundayOfAdvent()}.</li></ol>
+     */
     default Stream<?> stream() {
         return Stream.of(getYear(), getSolemnitiesCycle(), getNormalCycle(), getAshWednesday(), getEasterDay(),
                 getAscensionDay(), getPentecost(), getFeastOfCorpusChristi(),

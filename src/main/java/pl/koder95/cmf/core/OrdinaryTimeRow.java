@@ -18,21 +18,42 @@ import java.time.temporal.ChronoUnit;
  */
 public interface OrdinaryTimeRow {
 
+    /**
+     * @return określa datę rozpoczynającą okres zwykły
+     */
     LocalDate getStart();
+
+    /**
+     * @return określa datę kończącą okres zwykły
+     */
     LocalDate getEnd();
 
+    /**
+     * @return zwraca liczbę tygodni, która jest między rozpoczęciem a zakończeniem okresu
+     */
     default long getWeeksAmount() {
         return ChronoUnit.WEEKS.between(getStart(), getEnd().plusDays(1));
     }
 
+    /**
+     * @return zwraca porządkowy numer tygodnia dla daty rozpoczęcia okresu
+     */
     default long getStartWeekNumber() {
         return getStart().getMonth() == Month.JANUARY? 1 : getEndWeekNumber() - getWeeksAmount();
     }
 
+    /**
+     * @return zwraca porządkowy numer tygodnia dla daty zakończenia okresu
+     */
     default long getEndWeekNumber() {
         return getStart().getMonth() == Month.JANUARY? getStartWeekNumber() + getWeeksAmount() : 34;
     }
 
+    /**
+     * @param start data rozpoczynająca okres zwykły
+     * @param end data kończąca okres zwykły
+     * @return obiekt anonimowej klasy, która posiada wprowadzone dane i korzysta z domyślnych metod interfejsu
+     */
     static OrdinaryTimeRow create(LocalDate start, LocalDate end) {
         return new OrdinaryTimeRow() {
             @Override

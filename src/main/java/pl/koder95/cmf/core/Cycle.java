@@ -24,10 +24,18 @@ public final class Cycle {
         II, I;
     }
 
+    /**
+     * @param year rok
+     * @return zwraca cykl czytań w niedziele i uroczystości dla podanego roku
+     */
     public static Solemnities solemnities(int year) {
         return Solemnities.values()[year % 3];
     }
 
+    /**
+     * @param year rok
+     * @return zwraca cykl czytań w ferie dla podanego roku
+     */
     public static Normal normal(int year) {
         return Normal.values()[year % 2];
     }
