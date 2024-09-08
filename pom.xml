@@ -8,7 +8,7 @@
     <url>https://github.com/koder95/CatholicMoveableFeasts</url>
     <groupId>pl.koder95</groupId>
     <artifactId>cmf</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <developers>
         <developer>
             <id>Koder95</id>
@@ -37,6 +37,14 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+    </dependencies>
 
     <licenses>
         <license>

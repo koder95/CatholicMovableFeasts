@@ -2,6 +2,10 @@
 
 ## Wersje poprzedzające v1.0 (prototypowe)
 
+### v0.1.2
+- Dodano możliwość zapisywania i wczytywania `MovableFeastsRow` do formatu JSON.
+- Dodano klasy implementujące interfejsy jądra.
+
 ### v0.1.1
 - Zmieniono datę Uroczystości Wniebowstąpienia Pańskiego: od teraz interfejs domyślnie zwraca 40 dzień po Wielkanocy. 
   Wcześniej zwracana była 7. niedziela wielkanocna, która jest wyjątkiem dla Polski niż normą w Kościele powszechnym.
