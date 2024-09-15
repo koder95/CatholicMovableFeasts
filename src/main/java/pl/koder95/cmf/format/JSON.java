@@ -55,7 +55,13 @@ public class JSON {
     }
 
     public static String toJson(List<FinalMFR> mfrs) {
-        Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd").registerTypeAdapter(
+        return toJson(mfrs, false);
+    }
+
+    public static String toJson(List<FinalMFR> mfrs, boolean prettyPrinting) {
+        GsonBuilder builder = new GsonBuilder();
+        if (prettyPrinting) builder = builder.setPrettyPrinting();
+        Gson g = builder.setDateFormat("yyyy-MM-dd").registerTypeAdapter(
                 LocalDate.class,
                 (JsonSerializer<LocalDate>) (src, typeOfSrc, context) -> new JsonPrimitive(src.toString())
         ).create();
