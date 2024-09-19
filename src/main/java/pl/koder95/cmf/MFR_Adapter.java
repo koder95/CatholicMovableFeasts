@@ -4,6 +4,7 @@ import pl.koder95.cmf.core.Cycle;
 import pl.koder95.cmf.core.MovableFeastsRow;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class MFR_Adapter extends MFR_Abstract {
@@ -11,7 +12,7 @@ public class MFR_Adapter extends MFR_Abstract {
     private final MovableFeastsRow mfr;
 
     public MFR_Adapter(MovableFeastsRow mfr) {
-        this.mfr = mfr;
+        this.mfr = Objects.requireNonNull(mfr);
     }
 
     @Override
