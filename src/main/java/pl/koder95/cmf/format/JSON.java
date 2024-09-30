@@ -41,6 +41,17 @@ public class JSON {
             this.main = main;
         }
 
+        /**
+         * Interpretuje dane wczytane z pliku JSON i przekształca je w listę {@link FinalMFR wierszy świąt ruchomych}.
+         * Lista może być:
+         * <ul>
+         * <li>pusta (plik JSON jest pusty),</li>
+         * <li>jednoelementowa (plik JSON posiada jeden wiersz świąt ruchomych),</li>
+         * <li>wieloelementowa (plik JSON posiada więcej niż jeden wiersz świąt ruchomych,</li>
+         * <li>{@code null} (w pozostałych przypadkach, np. plik JSON zawiera tylko typ prosty).</li>
+         * </ul>
+         * @return lista {@link FinalMFR wierszy świąt ruchomych}
+         */
         public List<FinalMFR> load() {
             Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd")
                     .registerTypeAdapter(
