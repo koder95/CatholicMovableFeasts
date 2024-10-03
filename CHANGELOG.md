@@ -5,6 +5,7 @@
 ### v0.1.2
 - Dodano możliwość zapisywania i wczytywania `MovableFeastsRow` do formatu JSON.
 - Dodano klasy implementujące interfejsy jądra.
+- Dodano obsługę wiersza poleceń.
 
 ### v0.1.1
 - Zmieniono datę Uroczystości Wniebowstąpienia Pańskiego: od teraz interfejs domyślnie zwraca 40 dzień po Wielkanocy. 
