@@ -7,7 +7,7 @@ A simple and useful generator of important christian dates.
 <dependency>
     <groupId>pl.koder95</groupId>
     <artifactId>cmf</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 </dependency>
 ```
 ### Command line execution
