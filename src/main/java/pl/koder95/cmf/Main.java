@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Klasa obsługująca wiersz poleceń i jest miejscem startowym dla aplikacji konsolowej.
+ */
 public class Main {
 
     private Main() {}
@@ -40,7 +43,6 @@ public class Main {
                 .hasArg()
                 .type(int[].class)
                 .converter(string -> {
-                    System.out.println("Converting: " + string);
                     String digits = "(\\d)+";
                     if (string.matches(digits)) {
                         return new int[] { Integer.parseInt(string) };
@@ -52,7 +54,6 @@ public class Main {
                         return IntStream.rangeClosed(begin, end).toArray();
                     } else {
                         String[] years = string.split("\\.");
-                        System.out.println("Parts: " + Arrays.deepToString(years));
                         return Arrays.stream(years).filter(s -> s.matches(digits)).mapToInt(Integer::parseInt).toArray();
                     }
                 })
@@ -85,7 +86,7 @@ public class Main {
     }
 
     private static List<FinalMFR> generate(int... years) {
-        System.out.println("Generating for years: " + Arrays.toString(years));
+        System.out.println("Generating MFR for years: " + Arrays.toString(years));
         return IntStream.of(years).sorted().mapToObj(MFR_Basic::new).map(MFR_Basic::toStable).map(MFR_Stable::toFinal).collect(Collectors.toList());
     }
 

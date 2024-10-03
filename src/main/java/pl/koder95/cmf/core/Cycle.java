@@ -14,14 +14,14 @@ public final class Cycle {
      * Typ wyliczeniowy odnoszący się do trzech cykli czytań niedzielnych i uroczystości.
      */
     public enum Solemnities {
-        C, A, B;
+        C, A, B
     }
 
     /**
      * Typ wyliczeniowy odnoszący się do dwóch cykli czytań dni powszednich (dla ferii).
      */
     public enum Normal {
-        II, I;
+        II, I
     }
 
     /**
