@@ -110,6 +110,38 @@ public class MFR_Stable extends MFR_Basic {
         this.firstSundayOfAdvent = firstSundayOfAdvent;
     }
 
+    public void resetSolemnitiesCycle() {
+        setSolemnitiesCycle(super.getSolemnitiesCycle());
+    }
+
+    public void resetNormalCycle() {
+        setNormalCycle(super.getNormalCycle());
+    }
+
+    public void resetAshWednesday() {
+        setAshWednesday(super.getAshWednesday());
+    }
+
+    public void resetEasterDay() {
+        setEasterDay(super.getEasterDay());
+    }
+
+    public void resetAscensionDay() {
+        setAscensionDay(super.getAscensionDay());
+    }
+
+    public void resetPentecost() {
+        setPentecost(super.getPentecost());
+    }
+
+    public void resetFeastOfCorpusChristi() {
+        setFeastOfCorpusChristi(super.getFeastOfCorpusChristi());
+    }
+
+    public void resetFirstSundayOfAdvent() {
+        setFirstSundayOfAdvent(super.getFirstSundayOfAdvent());
+    }
+
     public void setFirstPartOfOrdinaryTime(OTR_Stable firstPartOfOrdinaryTime) {
         this.firstPartOfOrdinaryTime = firstPartOfOrdinaryTime;
     }
@@ -118,11 +150,31 @@ public class MFR_Stable extends MFR_Basic {
         this.secondPartOfOrdinaryTime = secondPartOfOrdinaryTime;
     }
 
+    public void resetFirstPartOfOrdinaryTime() {
+        setFirstPartOfOrdinaryTime(super.getFirstPartOfOrdinaryTime().toStable());
+    }
+
+    public void resetSecondPartOfOrdinaryTime() {
+        setSecondPartOfOrdinaryTime(super.getSecondPartOfOrdinaryTime().toStable());
+    }
+
+    public void resetPartsOfOrdinaryTime() {
+        resetFirstPartOfOrdinaryTime();
+        resetSecondPartOfOrdinaryTime();
+    }
+
+    public void validate() {
+        resetNormalCycle();
+        resetSolemnitiesCycle();
+        resetPartsOfOrdinaryTime();
+    }
+
     public FinalMFR toFinal() {
+        OTR_Stable fpot = getFirstPartOfOrdinaryTime();
+        OTR_Stable spot = getSecondPartOfOrdinaryTime();
         return new FinalMFR(getYear(), getSolemnitiesCycle(), getNormalCycle(), getAshWednesday(), getEasterDay(),
                 getAscensionDay(), getPentecost(), getFeastOfCorpusChristi(), getFirstSundayOfAdvent(),
-                getFirstPartOfOrdinaryTime() == null? null : getFirstPartOfOrdinaryTime().toFinal(),
-                getSecondPartOfOrdinaryTime() == null? null : getSecondPartOfOrdinaryTime().toFinal());
+                fpot == null? null : fpot.toFinal(), spot == null? null : spot.toFinal());
     }
 
     @Override
