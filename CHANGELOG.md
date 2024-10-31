@@ -2,6 +2,9 @@
 
 ## Wersje poprzedzające v1.0 (prototypowe)
 
+### v0.1.3
+- Dodano możliwość modyfikowania `MovableFeastsRow` za pomocą metody statycznej singletonu `Modifier`.
+
 ### v0.1.2
 - Dodano możliwość zapisywania i wczytywania `MovableFeastsRow` do formatu JSON.
 - Dodano klasy implementujące interfejsy jądra.
